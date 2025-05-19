@@ -4,6 +4,8 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +18,10 @@ import java.util.Optional;
 
 @RestController
 @Getter(AccessLevel.PRIVATE)
-//@AllArgsConstructor(onConstructor_ = @Autowired)
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class EnrollController {
+
+    private final static Logger logger = LoggerFactory.getLogger(EnrollController.class);
 
     IEnrollService enrollService;
 
@@ -27,9 +30,19 @@ public class EnrollController {
         this.enrollService = enrollService;
     }
 
-    @GetMapping("/enrolls")
+    @GetMapping({"/enrolls"})
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Collection<EnrollDto>> all() {
+    public ResponseEntity<Collection<EnrollDto>> all(
+            final Optional<Integer> year,
+            final Optional<String> order
+    ) {
+        logger.info("EnrollController::all()");
+        if(year.isPresent())
+            return ResponseEntity.ofNullable(getEnrollService().getAllByYear(year.get()));
+
+        if(order.isPresent())
+            return ResponseEntity.ofNullable(getEnrollService().getAllByOrder(order.get()));
+
         return ResponseEntity.ofNullable(getEnrollService().getAll());
     }
 
@@ -39,14 +52,5 @@ public class EnrollController {
         return ResponseEntity.ofNullable(getEnrollService().getBy(id));
     }
 
-    @GetMapping("/enrolls?year={year}")
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Collection<EnrollDto>> allByYear(final @PathVariable Integer year) {
-        return ResponseEntity.ofNullable(getEnrollService().getAllByYear(year));
-    }
 
-    @GetMapping("/enrolls?order={oid}")
-    public ResponseEntity<Collection<EnrollDto>> allByOrder(final @PathVariable String oid) {
-        return ResponseEntity.ofNullable(getEnrollService().getAllByOrder(oid));
-    }
 }
