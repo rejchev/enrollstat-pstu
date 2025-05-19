@@ -1,6 +1,5 @@
 package ru.rejchev.pstu.enrollstat.parsers;
 
-import jakarta.persistence.Column;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
@@ -11,14 +10,10 @@ import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import ru.rejchev.pstu.enrollstat.domain.EnrollMetaParserToolRecord;
-import ru.rejchev.pstu.enrollstat.domain.base.IEnroll;
-import ru.rejchev.pstu.enrollstat.domain.base.IEnrollMeta;
 import ru.rejchev.pstu.enrollstat.domain.base.IEnrollSource;
 import ru.rejchev.pstu.enrollstat.domain.dtos.EnrollDto;
 import ru.rejchev.pstu.enrollstat.domain.dtos.EnrollMetaDto;
 import ru.rejchev.pstu.enrollstat.domain.dtos.EnrollSourceDto;
-import ru.rejchev.pstu.enrollstat.domain.models.Enroll;
-import ru.rejchev.pstu.enrollstat.domain.models.EnrollMeta;
 import ru.rejchev.pstu.enrollstat.events.EnrollDocumentPollerEvent;
 import ru.rejchev.pstu.enrollstat.services.base.IEnrollMetaService;
 import ru.rejchev.pstu.enrollstat.services.base.IEnrollService;
@@ -208,7 +203,7 @@ public class EnrollDocumentParser {
 
         final String[] parts = buf.split(" ");
 
-        if((idx = parts[0].indexOf("-")) != -1)
+        if(parts[0].contains("-"))
             buf2 = parts[0] + " " + parts[1];
 
         else buf2 = parts[0];
