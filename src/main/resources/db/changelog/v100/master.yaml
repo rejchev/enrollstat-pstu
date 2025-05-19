@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: rejchev
+
+  - include:
+      file: 001_ddl_tables.sql
+      relativeToChangelogFile: true
