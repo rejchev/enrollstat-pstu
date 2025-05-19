@@ -22,7 +22,7 @@ import java.util.Optional;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class EnrollMetaController {
 
-    private final static Logger logger = LoggerFactory.getLogger(EnrollSourceController.class);
+    private final static Logger logger = LoggerFactory.getLogger(EnrollMetaController.class);
 
     IEnrollMetaService enrollMetaService;
     IEnrollSourceService enrollSourceService;
