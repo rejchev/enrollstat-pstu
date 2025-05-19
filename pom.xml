@@ -30,16 +30,26 @@
 	</developers>
 
 
-	<url/>
-	<licenses>
-		<license />
-	</licenses>
+	<url>
+		https://github.com/rejchev/enrollstat-pstu
+	</url>
+
 	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
+		<url>
+			https://github.com/rejchev/enrollstat-pstu
+		</url>
 	</scm>
+
+	<issueManagement>
+		<url>https://github.com/rejchev/enrollstat-pstu/issues</url>
+	</issueManagement>
+
+	<licenses>
+		<license>
+			<name>GPLv3</name>
+		</license>
+	</licenses>
+
 	<properties>
 		<java.version>17</java.version>
 	</properties>
