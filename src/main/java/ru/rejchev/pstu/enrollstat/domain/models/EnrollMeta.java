@@ -74,7 +74,7 @@ public class EnrollMeta implements IEnrollMeta, Serializable {
     String category = "";
 
     // Конкурсная группа
-    @Column(name = "competition_group", nullable = false, length = 1024)
+    @Column(name = "competition_group", nullable = false, length = 512)
     String competitionGroup = "";
 
     @Column(name = "last_modified", nullable = false)
