@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '17'
-          distribution: 'amazoncorretto'
+          distribution: 'corretto'
           cache: maven
       - name: Build pkg
         run: mvn -B clean package --file pom.xml
