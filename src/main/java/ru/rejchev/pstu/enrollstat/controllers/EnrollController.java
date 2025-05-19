@@ -1,7 +1,6 @@
 package ru.rejchev.pstu.enrollstat.controllers;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import org.slf4j.Logger;
@@ -48,7 +47,7 @@ public class EnrollController {
 
     @GetMapping("/enrolls/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Optional<EnrollDto>> byId(final @PathVariable String id) {
+    public ResponseEntity<Optional<EnrollDto>> getById(final @PathVariable String id) {
         return ResponseEntity.ofNullable(getEnrollService().getBy(id));
     }
 
