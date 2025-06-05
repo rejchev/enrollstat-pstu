@@ -22,4 +22,6 @@ public interface IEnrollRepository extends JpaRepository<Enroll, String> {
 
     @Transactional(readOnly = true)
     Optional<Enroll> findByEid(String eid);
+
+    long countEnrollBySource_Year(int sourceYear);
 }

@@ -52,4 +52,12 @@ public class EnrollController {
     }
 
 
+    @GetMapping("/enrolls/count")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Collection<EnrollDto>> getCounts(final Optional<Integer> year) {
+        return ResponseEntity.ofNullable(year
+                .map(x -> getEnrollService().getAllByYear(x))
+                .orElseGet(() -> getEnrollService().getAll())
+        );
+    }
 }

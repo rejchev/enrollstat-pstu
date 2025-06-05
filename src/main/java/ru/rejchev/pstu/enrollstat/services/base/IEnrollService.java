@@ -25,6 +25,9 @@ public interface IEnrollService {
 
     void delete(String id);
 
-
     EnrollDto getOrCreate(IEnroll value);
+
+    long count();
+
+    long countByYear(int year);
 }

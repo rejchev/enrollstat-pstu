@@ -75,4 +75,14 @@ public class EnrollService implements IEnrollService {
     public EnrollDto getOrCreate(IEnroll value) {
         return getByEid(value.getEid()).orElseGet(() -> create(value));
     }
+
+    @Override
+    public long count() {
+        return getRepos().count();
+    }
+
+    @Override
+    public long countByYear(int year) {
+        return getRepos().countEnrollBySource_Year(year);
+    }
 }
